@@ -3,7 +3,7 @@
 #include "common.h"
 #include "instructions.h"
 
-typedef struct {
+typedef struct cpu_registers {
     u16 pc;
     u16 sp;
     u8 a;
@@ -18,7 +18,7 @@ typedef struct {
     //u16 sp;
 } cpu_reg;
 
-typedef struct {
+typedef struct cpu_context {
     cpu_reg regs;
     
     inst_param *cur_inst;
