@@ -1,13 +1,18 @@
 #include "../include/cart.h"
 
-typedef struct {
-    char filename[1024];
+typedef struct cart_context{
+    rom_head *header;
     u32 rom_size;
     u8 *rom_data;
-    rom_header *header;
-} cart_context;
+    char filename[1024];
 
-static cart_context ctx;
+    //char filename[1024];
+    //u32 rom_size;
+    //u8 *rom_data;
+    //rom_head *header;
+} cart_ctx;
+
+static cart_ctx ctx;
 
 static const char *ROM_TYPES[] = {
     "ROM ONLY",
@@ -148,7 +153,7 @@ bool cart_load(char *cart) {
     fread(ctx.rom_data, ctx.rom_size, 1, fp);
     fclose(fp);
 
-    ctx.header = (rom_header *)(ctx.rom_data + 0x100);
+    ctx.header = (rom_head *)(ctx.rom_data + 0x100);
     ctx.header->title[15] = 0;
 
     printf("Cartridge Loaded:\n");
@@ -167,4 +172,12 @@ bool cart_load(char *cart) {
     printf("\t Checksum : %2.2X (%s)\n", ctx.header->checksum, (x & 0xFF) ? "PASSED" : "FAILED");
 
     return true;
+}
+
+u8 cart_read(u16 address) {
+    return ctx.rom_data[address];
+}
+
+void cart_write(u16 address, u8 value) {
+    NO_IMPL();
 }

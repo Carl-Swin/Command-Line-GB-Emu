@@ -18,9 +18,9 @@
 
 */
 
-static emu_context ctx;
+static emu_ctx ctx;
 
-emu_context *emu_get_context() {
+emu_ctx *emu_get_context() {
     return &ctx;
 }
 
@@ -67,4 +67,8 @@ int emu_run(int argc, char **argv) {
     }
 
     return 0;
+}
+
+void emu_cycles(int cpu_cycles) {
+    NO_IMPL()
 }

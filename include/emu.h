@@ -2,12 +2,14 @@
 
 #include "common.h"
 
-typedef struct {
-    bool paused;
-    bool running;
+typedef struct emu_context{
     u64 ticks;
-} emu_context;
+    bool paused : 1;
+    bool running : 1;
+} emu_ctx;
 
 int emu_run(int argc, char **argv);
 
-emu_context *emu_get_context();
+emu_ctx *emu_get_context();
+
+void emu_cycles(int cpu_cycles);
