@@ -1,18 +1,20 @@
 #include "../include/cart.h"
 
 typedef struct cart_context{
+    //* Optimized
     rom_head *header;
     u32 rom_size;
     u8 *rom_data;
+    char filename[1024]
+    /*/
     char filename[1024];
-
-    //char filename[1024];
-    //u32 rom_size;
-    //u8 *rom_data;
-    //rom_head *header;
+    u32 rom_size;
+    u8 *rom_data;
+    rom_head *header;
+    //*/
 } cart_ctx;
 
-static cart_ctx ctx;
+static cart_ctx ctx = { 0 };
 
 static const char *ROM_TYPES[] = {
     "ROM ONLY",

@@ -1,4 +1,5 @@
 #include "../include/bus.h"
+#include "../include/cart.h"
 
 u8 bus_read(u16 address) {
     if (address < 0x8000) return cart_read(address);

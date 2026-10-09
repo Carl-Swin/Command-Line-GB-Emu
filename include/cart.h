@@ -3,14 +3,15 @@
 #include "common.h"
 
 typedef struct rom_header{
-    u16 new_lic_code;
-    u16 global_checksum;
+    // Optimized 
+    //u16 new_lic_code;
+    //u16 global_checksum;
 
     u8 entry[4];
     u8 logo[0x30];
 
     char title[16];
-    //u16 new_lic_code;
+    u16 new_lic_code;
     u8 sgb_flag;
     u8 type;
     u8 rom_size;
@@ -19,7 +20,7 @@ typedef struct rom_header{
     u8 lic_code;
     u8 version;
     u8 checksum;
-    //u16 global_checksum;
+    u16 global_checksum;
 } rom_head;
 
 bool cart_load(char *cart);

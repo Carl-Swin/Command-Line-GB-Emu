@@ -101,19 +101,21 @@ typedef enum {
 } cond_type;
 
 typedef struct instruction_set_parameters {
+    /* Optimized
     u8 param;
     in_type type;
     addr_mode mode;
     reg_type reg_1;
     reg_type reg_2;
     cond_type cond;
-
-    //in_type type;
-    //addr_mode mode;
-    //reg_type reg_1;
-    //reg_type reg_2;
-    //cond_type cond;
-    //u8 param;
+    /*/
+    in_type type;
+    addr_mode mode;
+    reg_type reg_1;
+    reg_type reg_2;
+    cond_type cond;
+    u8 param;
+    //*/
 } inst_param;
 
 inst_param *instruction_by_opcode(u8 opcode);

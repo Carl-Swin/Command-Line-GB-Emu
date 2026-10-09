@@ -13,7 +13,6 @@ static void fetch_instruction() {
     ctx.cur_opcode = bus_read(ctx.regs.pc++);
     ctx.cur_inst = instruction_by_opcode(ctx.cur_opcode);
 
-    // fdsa: ctx.cur_opcode is getting 0x0 at ctx.regs.pc = 0x101 which is incorrect. Windows must read files differently from Linux, research their differences and update "bool cart_load(char *cart)".
     if (ctx.cur_inst == NULL) {
         fprintf(stderr, "NULL Instruction, Current opcode: %02x\n", ctx.cur_opcode);
         exit(-1);
@@ -48,7 +47,7 @@ static void fetch_data() {
             return;
         }
         default: {
-            fprintf(stderr, "Unknown Addressing Mode: %x\n", ctx.cur_inst->mode);
+            fprintf(stderr, "Unknown Addressing Mode: %d (%02X)\n", ctx.cur_inst->mode, ctx.cur_opcode);
             exit(-1);
         }
     }
@@ -56,7 +55,7 @@ static void fetch_data() {
 static void execute() {
     printf("execute instructions: %02X\tPC: %04x\n", ctx.cur_opcode, ctx.regs.pc);
 
-    //NO_IMPL()
+    NO_IMPL()
 }
 
 bool cpu_step() {

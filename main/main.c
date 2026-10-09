@@ -1,4 +1,5 @@
 // gcc -w main/*.c lib/*.c *.dll
+// gcc -w main/*.c lib/*.c -o gb-emu -lSDL3
 
 #include "../include/emu.h"
 
